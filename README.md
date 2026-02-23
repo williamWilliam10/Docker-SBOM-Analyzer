@@ -1,6 +1,3 @@
-Voici le README complet pour votre projet Docker-SBOM-Analyzer :
-
-```markdown
 # Docker-SBOM-Analyzer 🔍
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
@@ -39,7 +36,6 @@ L'outil utilise Trivy, le scanner de vulnérabilités open-source d'Aqua Securit
 Assurez-vous d'avoir installé les outils suivants sur votre machine Linux :
 
 #### 1. Docker
-
 ```bash
 # Installation sur Debian/Ubuntu
 sudo apt update
@@ -58,7 +54,6 @@ docker --version
 ```
 
 #### 2. Trivy
-
 ```bash
 # Méthode 1 : Installation via APT (Recommandé pour Debian/Ubuntu)
 sudo apt-get install wget apt-transport-https gnupg lsb-release
@@ -72,7 +67,6 @@ trivy --version
 ```
 
 **Alternative (installation manuelle) :**
-
 ```bash
 # Télécharger et installer la dernière version
 wget https://github.com/aquasecurity/trivy/releases/download/v0.50.0/trivy_0.50.0_Linux-64bit.deb
@@ -83,7 +77,6 @@ trivy --version
 ```
 
 #### 3. jq (pour le traitement JSON)
-
 ```bash
 sudo apt install jq -y
 
@@ -93,15 +86,13 @@ jq --version
 
 ### Récupération du script
 
-• Cloner le repository
-
+- Cloner le repository
 ```bash
 git clone https://github.com/williamWilliam10/Docker-SBOM-Analyzer.git
 cd Docker-SBOM-Analyzer
 ```
 
-• Donner les permissions d'exécution
-
+- Donner les permissions d'exécution
 ```bash
 chmod +x docker_sbom_scan.sh
 ```
@@ -111,7 +102,6 @@ chmod +x docker_sbom_scan.sh
 ### Étape 1 : Préparer vos images Docker
 
 Assurez-vous que l'image que vous souhaitez analyser existe localement :
-
 ```bash
 # Lister vos images locales
 docker images
@@ -123,7 +113,6 @@ docker build -t mon-application .
 ```
 
 ### Étape 2 : Lancer l'analyse
-
 ```bash
 ./docker_sbom_scan.sh
 ```
@@ -136,7 +125,6 @@ Le script va :
 5. Créer un rapport HTML interactif
 
 **Exemple d'exécution :**
-
 ```
 === [Docker-SBOM-Analyzer] Analyse SBOM d'image Docker locale (Trivy) ===
 
@@ -177,7 +165,6 @@ Ouvrir le rapport :
 ### Étape 3 : Consulter les résultats
 
 Ouvrez le rapport HTML généré dans votre navigateur :
-
 ```bash
 firefox sbom_reports_*/report.html
 # ou
@@ -185,7 +172,6 @@ chromium sbom_reports_*/report.html
 ```
 
 ## 📂 Structure des rapports générés
-
 ```
 sbom_reports_20260223_180855/
 ├── sbom.json                    # SBOM complet au format CycloneDX (JSON)
@@ -236,7 +222,6 @@ Trivy utilise plusieurs sources pour une couverture maximale :
 ## 💡 Cas d'usage
 
 ### 1. Audit de sécurité pré-production
-
 ```bash
 # Analyser une image avant déploiement
 ./docker_sbom_scan.sh
@@ -247,7 +232,6 @@ Trivy utilise plusieurs sources pour une couverture maximale :
 ```
 
 ### 2. Intégration CI/CD
-
 ```bash
 # Dans votre pipeline GitLab CI / GitHub Actions
 ./docker_sbom_scan.sh <<< "mon-app:${CI_COMMIT_TAG}"
@@ -330,13 +314,11 @@ trivy image --download-db-only
 ## 🔄 Mise à jour
 
 ### Mettre à jour Trivy
-
 ```bash
 sudo apt update && sudo apt upgrade trivy
 ```
 
 ### Mettre à jour la base de données de vulnérabilités
-
 ```bash
 trivy image --download-db-only
 ```
@@ -359,4 +341,3 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 ---
 
 ⭐️ Si ce projet vous a aidé, n'hésitez pas à lui donner une étoile !
-```
